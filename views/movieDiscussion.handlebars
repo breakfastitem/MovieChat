@@ -1,5 +1,16 @@
 <!--Navigation bar-->
-<h1>Movie Chat</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">MovieChat</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
     <div class="row">
@@ -63,7 +74,7 @@
     let posterUrl;
 
     let key = "8e4b0c73";
-    
+
     $.ajax({
         method: "GET",
         url: "https://www.omdbapi.com/?i=" + omdbId + "&plot=short&r=json&" + "apikey=" + key,

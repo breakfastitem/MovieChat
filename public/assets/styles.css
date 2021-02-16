@@ -36,7 +36,7 @@ h1 {
     padding-top:5px;
     padding-bottom: 5px;
     
-    background-color: antiquewhite;
+    background-color: darkred;
     border-radius: 15px;
 }
 
@@ -45,15 +45,10 @@ h1 {
    text-align: left;
 
    font-size: larger;
-
-   /* border-style: solid;
-   border-radius: 10px;
-   border-color: black;
-   border-width: 5px; */
 }
 
 .party-item-text p {
-    color: black;
+    color: white;
     font-weight: bolder;
 }
 

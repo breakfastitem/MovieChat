@@ -33,18 +33,21 @@ module.exports = function (app) {
 
     app.get("/view/:viewId", function (req, res) {
         db.Chat.findAll({ where: { ViewPartyId: req.params.viewId } }).then(function (data) {
-            const hbsObject = {
-                chats: data
-            };
-            console.log(data);
-            res.render("viewParty", hbsObject);
+            db.ViewParty.findByPk(req.params.viewId).then(function (party) {
+                const hbsObject = {
+                    movieId: party.OMDBId,
+                    chats: data
+                }
+                console.log(data);
+                res.render("viewParty", hbsObject);
+
+            }).catch(function (err) {
+                res.sendStatus("500");
+                throw err;
+            });
         }).catch(function (err) {
-            const hbsObject = {
-                chats: []
-            };
-            console.log(data);
-            res.render("viewParty", hbsObject);
+            res.sendStatus("500");
+            throw err;
         });
     });
-
 }

@@ -1,0 +1,118 @@
+<!--Navigation bar-->
+<h1>Movie Chat</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 content-block">
+            <div id="movie-info">
+
+            </div>
+        </div>
+        <div class="col-12 content-block">
+            <ul id="party-list">
+
+                {{#each parties}}
+                {{>party}}
+                {{/each}}
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 content-block">
+            <h2>Create a MovieChat Event</h2>
+            <form>
+                <label for="roomName">Movie Event Name: </label>
+                <br>
+                <input type="text" name="roomName" id="roomName">
+                <br>
+                <br>
+                <label for="viewDay">Viewing Day: </label>
+                <br>
+                <input type="date" name="viewDay" id="viewDay">
+                <br>
+                <br>
+                <label for="viewTime">Viewing Time: </label>
+                <br>
+                <input type="time" name="viewTime" id="viewTime">
+                <br>
+                <br>
+            </form>
+            <button type="submit" id="partyCreate" class="partyCreate">Create Viewing Party</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+    let urlArray = window.location.pathname.split("/");
+    let omdbId = urlArray[urlArray.length - 1];
+
+    let movieName;
+
+    let key = "8e4b0c73";
+    $.ajax({
+        method: "GET",
+        url: "https://www.omdbapi.com/?i=" + omdbId + "&plot=short&r=json&" + "apikey=" + key,
+        success: function (response) {
+            console.log(response);
+            $("#movie-info").append(`
+            <a href="/movie/${response.imdbID}"><h2>${response.Title}</h2></a>
+            <img src=${response.Poster}></img>
+            <p>${response.Plot}</p>
+            `);
+        },
+        error: function () {
+            console.log("404 Not Found");
+        }
+    });
+
+    $(document).ready(function () {
+        $("#partyCreate").on("click", function (event) {
+            console.log("clicked the create viewing party button");
+            $.ajax({
+                url: "/api/parties",
+                type: "POST",
+                data: {
+                    OMDBId: omdbId,
+                    roomName: $("#roomName").val().trim(),
+                    viewDay: moment($("#viewDay").val()).format("M/D/YYYY"),
+                    viewTime: moment($("#viewTime").val(), "HH:mm").format("h:mm A"),
+                },
+                success: () => {
+                    location.reload();
+                }
+            })
+        });
+
+        $(document).on("keydown", function (event) {
+            if (event.keyCode === 13) {
+                console.log("pressed enter");
+                $.ajax({
+                    url: "/api/parties",
+                    type: "POST",
+                    data: {
+                        OMDBId: omdbId,
+                        roomName: $("#roomName").val().trim(),
+                        viewDay: moment($("#viewDay").val()).format("M/D/YYYY"),
+                        viewTime: moment($("#viewTime").val(), "HH:mm").format("h:mm A"),
+                    },
+                    success: () => {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+</script>

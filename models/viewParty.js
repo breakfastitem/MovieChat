@@ -6,6 +6,15 @@ module.exports =function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull:false
         },
+        movieName:{
+            type: DataTypes.STRING,
+            allowNull:false
+        },
+        posterUrl:{
+            type: DataTypes.STRING,
+            allowNull:false,
+            default: "404"
+        },
         roomName: {
             type: DataTypes.STRING,
             allowNull:false

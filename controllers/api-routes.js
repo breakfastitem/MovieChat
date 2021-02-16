@@ -21,6 +21,8 @@ module.exports = function (app) {
         console.log(req.body.viewTime);
         db.ViewParty.create({
             OMDBId: req.body.OMDBId,
+            movieName: req.body.movieName,
+            posterUrl: req.body.posterUrl,
             roomName: req.body.roomName,
             viewerNumber: 0,
             viewDay: req.body.viewDay,

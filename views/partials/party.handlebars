@@ -1,2 +1,17 @@
-<a href="/view/{{this.dataValues.id}}">{{this.dataValues.roomName}} - {{this.dataValues.viewDay}} at
-    {{this.dataValues.viewTime}}</a><br>
+<div class="party-item">
+    <div class="row">
+        <div class="col-3">
+            <img class="party-poster" src="{{this.dataValues.posterUrl}}" />
+        </div>
+        <div class="col-9">
+            <div class="party-item-text">
+                <p> {{this.dataValues.movieName}}</p>
+                <a href="/view/{{this.dataValues.id}}">{{this.dataValues.roomName}} -
+                    {{this.dataValues.viewDay}}
+                    at
+                    {{this.dataValues.viewTime}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

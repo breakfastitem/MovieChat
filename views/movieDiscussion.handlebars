@@ -60,13 +60,18 @@
     let omdbId = urlArray[urlArray.length - 1];
 
     let movieName;
+    let posterUrl;
 
     let key = "8e4b0c73";
+    
     $.ajax({
         method: "GET",
         url: "https://www.omdbapi.com/?i=" + omdbId + "&plot=short&r=json&" + "apikey=" + key,
         success: function (response) {
-            console.log(response);
+
+            movieName = response.Title;
+            posterUrl = response.Poster;
+
             $("#movie-info").append(`
             <a href="/movie/${response.imdbID}"><h2>${response.Title}</h2></a>
             <img src=${response.Poster}></img>
@@ -86,6 +91,8 @@
                 type: "POST",
                 data: {
                     OMDBId: omdbId,
+                    movieName: movieName,
+                    posterUrl: posterUrl,
                     roomName: $("#roomName").val().trim(),
                     viewDay: moment($("#viewDay").val()).format("M/D/YYYY"),
                     viewTime: moment($("#viewTime").val(), "HH:mm").format("h:mm A"),
@@ -104,6 +111,8 @@
                     type: "POST",
                     data: {
                         OMDBId: omdbId,
+                        movieName: movieName,
+                        posterUrl: posterUrl,
                         roomName: $("#roomName").val().trim(),
                         viewDay: moment($("#viewDay").val()).format("M/D/YYYY"),
                         viewTime: moment($("#viewTime").val(), "HH:mm").format("h:mm A"),

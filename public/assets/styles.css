@@ -52,6 +52,12 @@ h1 {
     font-weight: bolder;
 }
 
+#messages ul {
+    color: black;
+    font-size: larger;
+    font-weight: bolder;
+}
+
 /* #search-block {
     background-color: black;
     opacity:0.5;

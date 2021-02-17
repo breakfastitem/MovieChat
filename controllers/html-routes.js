@@ -35,7 +35,10 @@ module.exports = function (app) {
         db.Chat.findAll({ where: { ViewPartyId: req.params.viewId } }).then(function (data) {
             db.ViewParty.findByPk(req.params.viewId).then(function (party) {
                 const hbsObject = {
-                    movieId: party.OMDBId,
+                    OMDBId: party.OMDBId,
+                    roomName: party.roomName,
+                    partyId: party.id,
+                    movieName: party.movieName,
                     chats: data
                 }
                 console.log(data);

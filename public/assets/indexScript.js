@@ -21,8 +21,7 @@ $("#search-button").on("click", (event) => {
             for (let i = 0; i < 4; i++) {
                 $("#search-list").append(`<div class="col-6"> 
                 <a href="/movie/${response.Search[i].imdbID}"><h2>${response.Search[i].Title}</h2></a>
-                <img src=${response.Search[i].Poster}></img> </div>
-                <hr>`);
+                <img src=${response.Search[i].Poster}></img> </div>`);
             }
         }
 

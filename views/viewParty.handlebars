@@ -7,16 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a id="movie-page-link" class="nav-link" href="/movie/{{movieId}}">To Movie page</a>
+                <a class="nav-link" href="/movie/{{OMDBId}}">{{movieName}}</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/view/{{partyId}}">{{roomName}}</a>
             </li>
         </ul>
     </div>
 </nav>
 <ul id="messages">
-        {{#each chats}}
-            <li>{{this.dataValues.body}}</li>
-        {{/each}}
-
+    {{#each chats}}
+    <li>{{this.dataValues.body}}</li>
+    {{/each}}
 </ul>
 <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>

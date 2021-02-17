@@ -6,7 +6,27 @@ body {
 }
 
 h1 {
-    background-color: black;
+    font-weight: 900;
+    font-size: 100px;
+
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+hr {
+    color: antiquewhite;
+    background-color: antiquewhite;
+    margin-right: 10%;
+    margin-left: 10%;
+    
 }
 
 #movie-list {
@@ -52,24 +72,10 @@ h1 {
     font-weight: bolder;
 }
 
-#messages ul {
-    color: black;
-    font-size: larger;
-    font-weight: bolder;
-}
-
-/* #search-block {
+#title-card {
     background-color: black;
-    opacity:0.5;
     border-radius: 25px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    font-weight: 900;
+    font-size: 100px;
+    text-shadow: 3px 3px #ff0000;
 }
-
-#parties-block {
-    background-color: black;
-    opacity:0.5;
-    border-radius: 25px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-} */

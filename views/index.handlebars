@@ -12,14 +12,20 @@
     </div>
 </nav>
 <div class="container">
+     <div class="row">
+        <div class="col-12 content-block">
+            <h1 id="title-card">Movie Chat</h1>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12 content-block">
-            <h2>Search For Movie</h2>
+            <h2>Search For Movie</h2>       
             <form id="search-form">
                 <input id="title-input" placeholder="Title"></input>
                 <button id="search-button">Search</button>
             </form>
+            <hr>
             <h3 id="search-title">Search Results</h3>
             <div id="search-list" class="row">
             </div>
@@ -28,6 +34,7 @@
     <div class="row">
         <div class="col-12 content-block">
             <h4>View Parties</h4>
+            <hr>
             <div class="row">
                 <div class="col-12" id="party-list">
                     {{#each parties}}
